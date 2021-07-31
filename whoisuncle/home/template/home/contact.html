@@ -1,0 +1,49 @@
+{% extends 'home/base.html'%}
+ {% load static %} 
+ {% block title %} Services {% endblock title %} 
+
+
+
+ {% block content %}
+
+ {% if status %}
+ {% if status == 'success' %}
+ <div class="alert alert-success" role="alert">
+  ได้รับข้อมูลแล้ว
+</div>
+{% else %}
+<div class="alert alert-danger" role="alert">
+  กรอกข้อมูลให้ครบ
+</div>
+{% endif %}
+{% endif %}
+
+<div class="container">
+  <form class="row g-3" method="POST">
+    {% csrf_token %} 
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label"
+        >สอบถามหัวข้อ</label
+      >
+      <input type="text" name="title" class="form-control" />
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">อีเมล</label>
+      <input type="email" name="email" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+      <label for="detail" class="form-label">รายละเอียด</label>
+      <textarea
+        name="detail"
+        class="form-control"
+        rows="3"
+      ></textarea>
+    </div>
+    <div class="col-auto">
+      <button type="submit" class="btn btn-primary mb-3">ส่งข้อความ</button>
+    </div>
+  </form>
+</div>
+
+{% endblock content %}
